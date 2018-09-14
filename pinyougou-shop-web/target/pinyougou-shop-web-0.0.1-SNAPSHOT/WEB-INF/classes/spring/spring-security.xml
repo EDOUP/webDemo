@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						 http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+		<!-- 设置页面不登录也可以访问 -->
+		<http pattern="/*.html" security="none"></http>
+		<http pattern="/css/**" security="none"></http>
+		<http pattern="/img/**" security="none"></http>
+		<http pattern="/js/**" security="none"></http>
+		<http pattern="/plugins/**" security="none"></http>
+		<http pattern="/seller/add.do" security="none"></http>
+		
+		<!--  页面拦截规则use-expressions：是否启用SPLE表达式-->
+		<http use-expressions="false">
+			<!--  access 单签用户必须有ROLE_USER的角色才可以访问目录及子目录
+				若use-expressions为true：则access="hasRole('ROLE_SELLER')"
+			-->
+			<intercept-url pattern="/**"   access="ROLE_SELLER"/>
+			<!--  开启表单登录功能 spring security 会自动创建登录界面，也可自行创建后引入-->
+			<form-login login-page="/shoplogin.html"   default-target-url="/admin/index.html"  authentication-failure-url="/shoplogin.html" always-use-default-target="true" />
+			<!-- 关闭csrf -->
+			<csrf disabled="true"/>
+			 <headers>
+			 		<frame-options policy="SAMEORIGIN" />
+			 </headers>
+			<!--  开启退出功能-->
+			 <logout/>
+		</http>
+		
+		<!-- 认证管理器 -->
+		<authentication-manager>
+			<!-- 认证提供者 -->
+			<authentication-provider user-service-ref="userDetailsService">
+					<password-encoder ref="passwordEncoder"/>
+			</authentication-provider>
+		</authentication-manager>
+		
+		<!--  认证类-->
+		<beans:bean id="userDetailsService" class="com.pinyougou.service.UserDetailsServiceImpl">
+				<beans:property name="sellerService" ref="sellerService"></beans:property>
+		</beans:bean>
+		
+			<!-- 引用dubbo 服务 -->
+			<dubbo:application name="pinyougou-shop-web" />
+			<dubbo:registry address="zookeeper://119.23.246.229:2181"/>
+			<dubbo:reference id="sellerService"  interface="com.pinyougou.sellergoods.service.SellerService"></dubbo:reference>
+			
+			<!-- 加密 -->
+			<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></beans:bean>
+</beans:beans>

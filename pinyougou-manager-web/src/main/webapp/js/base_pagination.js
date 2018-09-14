@@ -1,0 +1,1 @@
+var app=angular.module('pinyougou',['pagination' ]);//定义模块pinyougou和引入分页模块pagination
