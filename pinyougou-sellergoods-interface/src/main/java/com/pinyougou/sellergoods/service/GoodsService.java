@@ -71,5 +71,8 @@ public interface GoodsService {
 	 * @param status
 	 * @return
 	 */
-	public List<TbItem> findItemListByGoodsIdandStatus(Long[] goodsIds, String status );
+	public List<TbItem> findItemListByGoodsIdAndStatus(Long[] goodsIds, String status );
+
+
+	
 }

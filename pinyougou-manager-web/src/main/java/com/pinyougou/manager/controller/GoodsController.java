@@ -1,4 +1,5 @@
 package com.pinyougou.manager.controller;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -87,6 +88,10 @@ public class GoodsController {
 	public Result delete(Long [] ids){
 		try {
 			goodsService.delete(ids);
+			
+			//从索引库中删除
+			itemSearchService.deleteByGoodsIds(Arrays.asList(ids));
+			
 			return new Result(true, "删除成功"); 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -115,7 +120,7 @@ public class GoodsController {
 			goodsService.updateStatus(ids, status);
 			if("1".equals(status)) {//如果审核通过
 				//得到要导入的sku列表
-				List<TbItem> itemList = goodsService.findItemListByGoodsIdandStatus(ids,status);
+				List<TbItem> itemList = goodsService.findItemListByGoodsIdAndStatus(ids,status);
 				if(itemList.size()>0){				
 					//导入到solr				
 					itemSearchService.importList(itemList);

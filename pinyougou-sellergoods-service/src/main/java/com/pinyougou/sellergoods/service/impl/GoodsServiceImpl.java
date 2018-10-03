@@ -246,23 +246,23 @@ public class GoodsServiceImpl implements GoodsService {
 		return new PageResult(page.getTotal(), page.getResult());
 	}
 
-		@Override
-		public void updateStatus(Long[] ids, String status) {
+	@Override
+	public void updateStatus(Long[] ids, String status) {
 			for(Long id:ids) {
 				TbGoods goods = goodsMapper.selectByPrimaryKey(id);
 				goods.setAuditStatus(status);
 				goodsMapper.updateByPrimaryKey(goods);
 			}
-		}
+	}
 	
-		@Override
-		public List<TbItem> findItemListByGoodsIdandStatus(Long[] goodsIds, String status) {
+	@Override
+	public List<TbItem> findItemListByGoodsIdAndStatus(Long[] goodsIds, String status) {
 			TbItemExample example=new TbItemExample();
 			com.pinyougou.pojo.TbItemExample.Criteria criteria = example.createCriteria();
 			criteria.andStatusEqualTo(status);//状态
 			criteria.andGoodsIdIn(Arrays.asList(goodsIds));//指定条件：spuId集合
 			return itemMapper.selectByExample(example);
 	
-		}
+	}
 	
 }
