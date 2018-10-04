@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+		<!-- 设置页面不登录也可以访问 -->
+		<http pattern="/login.html" security="none"></http>
+		<http pattern="/login_error.html" security="none"></http>
+		
+		<!--  页面拦截规则use-expressions：是否启用SPLE表达式-->
+		<http use-expressions="false">
+			<!--  access 单签用户必须有ROLE_USER的角色才可以访问目录及子目录
+				若use-expressions为true：则access="hasRole('ROLE_USER')"
+			-->
+			<intercept-url pattern="/**"   access="ROLE_USER"/>
+			<!--  开启表单登录功能 spring security 会自动创建登录界面，也可自行创建后引入-->
+			<form-login login-page="/login.html"   default-target-url="/index.html"  authentication-failure-url="/login_error.html"/>
+			<!-- 关闭csrf -->
+			<csrf disabled="true"/>
+		</http>
+		
+		<!-- 认证管理器 -->
+		<authentication-manager>
+			<!-- 认证提供者 -->
+			<authentication-provider>
+						
+						<user-service>
+								<!-- 用户账号密码 所属角色 -->
+								<user name="admin" password="123456" authorities="ROLE_USER"/>
+						</user-service>
+			</authentication-provider>
+		</authentication-manager>
+		
+</beans:beans>
