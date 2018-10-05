@@ -36,10 +36,10 @@
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
 	
-	<!--spring security  配置 -->
+	<!--spring security 和spring jms配置 -->
 		 <context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring/spring-security.xml</param-value>
+		<param-value>classpath:spring/spring-*.xml</param-value>
 	 </context-param>
 	 <listener>
 		<listener-class>
