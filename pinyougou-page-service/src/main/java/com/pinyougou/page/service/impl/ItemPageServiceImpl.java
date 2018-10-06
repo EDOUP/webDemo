@@ -1,5 +1,6 @@
 package com.pinyougou.page.service.impl;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -98,6 +99,19 @@ public class ItemPageServiceImpl implements ItemPageService {
 			return false;
 		} 
 		
+	}
+
+	@Override
+	public boolean deleteItemHtml(Long[] goodsIds) {
+		try {
+			for(Long goodsId:goodsIds) {
+				new File(pagedir+goodsId+".html").delete();
+			}
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

@@ -92,6 +92,9 @@ public class GoodsController {
 	
 	@Autowired
 	private Destination queueSolrDeleteDestination;
+	
+	@Autowired
+	private Destination topicPageDeleteDestination;
 	/**
 	 * 批量删除
 	 * @param ids
@@ -111,6 +114,16 @@ public class GoodsController {
 					return session.createObjectMessage(ids);
 				}
 			});
+			
+			//删除每个服务器上的商品详情页
+			JmsTemplate.send(topicPageDeleteDestination,new MessageCreator() {
+				
+				@Override
+				public Message createMessage(Session session) throws JMSException {
+					return session.createObjectMessage(ids);
+				}
+			});
+			
 			
 			return new Result(true, "删除成功"); 
 		} catch (Exception e) {
