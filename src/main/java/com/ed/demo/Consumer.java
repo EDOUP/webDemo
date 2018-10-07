@@ -18,5 +18,10 @@ public class Consumer {
 		System.out.println("接收到消息:"+map);
 	}
 	
+	/*@JmsListener(destination = "mail")
+	public void readMailpMessae(Map map) {
+		System.out.println("接收到消息:"+map);
+	}*/
+	
 	
 }
