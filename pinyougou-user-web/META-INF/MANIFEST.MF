@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: pinyougou-user-web
+Bundle-SymbolicName: pinyougou-user-web
+Bundle-Version: 1.0.0.qualifier
+Export-Package: com.pinyougou.user.controller
