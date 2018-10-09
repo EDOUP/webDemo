@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<mate charset="UTF-8"></mate>
+	<title>邮件模板</title>
+</head>
+<body>
+	您好，感谢您注册品优购，这是一封验证邮箱，请输入下面的验证码完成注册，感谢您的支持！
+	<!--<a href="#" th:href="@{http://com25.cn/{id}(id=${id})}">激活账号</a>-->
+	<br></br>
+ 	验证码:
+	 <span th:text="${code}"></span>
+	 <br></br>
+	 本商城仅供学习之用，网站均为虚拟内容，请注意保护个人信息，不要进行真实交易。
+</body>
+</html>

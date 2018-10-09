@@ -26,10 +26,20 @@ public class MailListener {
 	
 	@JmsListener(destination = "template_mail")
 	public void testTemplateMailTest(Map<String,String> map){
+		System.out.println("接收信息 :"+map);
 		Context context = new Context();
-		context.setVariable("id", map.get("id"));
+		context.setVariable("code", map.get("id"));
 		
 		String emailContent=templateEngine.process("emailTemplate", context);
+		mailUtil.sendHtmlMail(map.get("to"),map.get("subject"),emailContent);
+	}
+	
+	@JmsListener(destination = "pinyougou_emailcode")
+	public void pinyouTemplateEmailCode(Map<String,String> map){
+		Context context = new Context();
+		context.setVariable("code", map.get("emailCode"));
+		
+		String emailContent=templateEngine.process("pinyougouEmailTemplate", context);
 		mailUtil.sendHtmlMail(map.get("to"),map.get("subject"),emailContent);
 	}
 	
