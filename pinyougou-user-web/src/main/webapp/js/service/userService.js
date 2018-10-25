@@ -31,7 +31,7 @@ app.service('userService',function($http){
 	}    
 	//发送邮箱验证码
 	this.sendEmailCode=function(email){
-		return $http.get('../user/sendCode.do?email='+email);
+		return $http.get('../user/sendcode.do?email='+email);
 	}
 	
 });

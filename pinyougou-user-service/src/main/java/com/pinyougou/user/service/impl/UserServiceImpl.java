@@ -187,9 +187,9 @@ public class UserServiceImpl implements UserService {
 				@Override
 				public Message createMessage(Session session) throws JMSException {	
 					MapMessage mapMessage = session.createMapMessage();			
-					mapMessage.setString("to",email);//手机号
-					mapMessage.setString("subject","品优购商城验证码");//模板编号			
-					mapMessage.setString("emailCode", emailCode);//参数
+					mapMessage.setString("to",email);//email号
+					mapMessage.setString("subject","品优购商城验证码");//邮件主题			
+					mapMessage.setString("emailCode", emailCode);//邮箱验证码
 					return mapMessage;
 				}
 			});		

@@ -9,36 +9,36 @@ import java.io.Serializable;
  *
  */
 public class Result implements Serializable {
+		
+	private boolean success;
+	private boolean flag;
+	private String message;
 	
-	private Boolean success;//是否成功
-	
-	private String message;//返回信息
-
-	
-	
-	public Result(Boolean success, String message) {
+	public Result(boolean success, String message) {
 		super();
-		this.success = success;
+		this.success=success;
+		this.flag = success;
 		this.message = message;
 	}
-
-	public Boolean getSuccess() {
-		return success;
+	public boolean isFlag() {
+		return flag;
 	}
-
-	public void setSuccess(Boolean success) {
-		this.success = success;
+	public void setFlag(boolean flag) {
+		this.flag = flag;
 	}
-
 	public String getMessage() {
 		return message;
 	}
-
 	public void setMessage(String message) {
 		this.message = message;
 	}
 	
-	
+	public boolean isSuccess() {
+		return success;
+	}
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
 	
 	
 }

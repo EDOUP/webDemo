@@ -9,6 +9,7 @@ F:\pinyougou\webDemo\pinyougou-dao\src\main\java\com\pinyougou\mapper\TbContentM
 F:\pinyougou\webDemo\pinyougou-dao\src\main\java\com\pinyougou\mapper\TbAddressMapper.java
 F:\pinyougou\webDemo\pinyougou-dao\src\main\java\com\pinyougou\mapper\TbGoodsMapper.java
 F:\pinyougou\webDemo\pinyougou-dao\src\main\java\com\pinyougou\mapper\TbItemCatMapper.java
+F:\pinyougou\webDemo\pinyougou-dao\src\main\java\com\pinyougou\mapper\TbSeckillGoodsMapper.java
 F:\pinyougou\webDemo\pinyougou-dao\src\main\java\com\pinyougou\mapper\TbUserMapper.java
 F:\pinyougou\webDemo\pinyougou-dao\src\main\java\com\pinyougou\mapper\TbBrandMapper.java
 F:\pinyougou\webDemo\pinyougou-dao\src\main\java\com\pinyougou\mapper\TbItemMapper.java
@@ -18,3 +19,4 @@ F:\pinyougou\webDemo\pinyougou-dao\src\main\java\com\pinyougou\mapper\TbCitiesMa
 F:\pinyougou\webDemo\pinyougou-dao\src\main\java\com\pinyougou\mapper\TbFreightTemplateMapper.java
 F:\pinyougou\webDemo\pinyougou-dao\src\main\java\com\pinyougou\mapper\TbAreasMapper.java
 F:\pinyougou\webDemo\pinyougou-dao\src\main\java\com\pinyougou\mapper\TbTypeTemplateMapper.java
+F:\pinyougou\webDemo\pinyougou-dao\src\main\java\com\pinyougou\mapper\TbSeckillOrderMapper.java

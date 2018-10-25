@@ -117,7 +117,7 @@ public class UserController {
 		return userService.findPage(user, page, rows);		
 	}
 	
-	@RequestMapping("/sendCode")
+	@RequestMapping("/sendcode")
 	public Result sendCode(String email){
 		try {
 			userService.creatMailCode(email);
