@@ -1,6 +1,4 @@
-# webDemo
-master:品优购商城系统 branch:用到的技术demo
-  master核心代码地址  branch ：用到的各种技术demo，可独立运行
+#  master核心代码地址  branch ：用到的各种技术demo，可独立运行
 
 分支|地址|介绍
 -|:-:|-:
